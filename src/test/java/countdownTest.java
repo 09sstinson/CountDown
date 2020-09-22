@@ -1,3 +1,4 @@
+import com.sstinson.countdown.DoubleArray;
 import com.sstinson.countdown.Main;
 import org.junit.Test;
 
@@ -54,8 +55,19 @@ public class countdownTest {
 
     @Test
     public void testGenerateAllBinaryBrackets(){
-        System.out.println(m.generateAllBinaryBrackets(6));
+        System.out.println(m.generateAllBinaryBrackets(10));
         assertEquals(m.generateAllBinaryBrackets(6).size(),42);
 
+    }
+
+    @Test
+    public void testHeapPermutation(){
+        DoubleArray obj = new DoubleArray();
+        ArrayList<Double> a = new ArrayList<>();
+        a.add(5.0);
+        a.add(20.0);
+        a.add(3.0);
+        obj.heapPermutation(a,a.size(),a.size());
+        System.out.println(obj.permutations);
     }
 }
