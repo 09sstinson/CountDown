@@ -89,6 +89,8 @@ public class Main {
         return list;
     }
 
+
+
     public ArrayList<String> generateAllBinaryBrackets(int length){
         if(length<=2){
             return null;

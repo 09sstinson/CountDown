@@ -1,4 +1,4 @@
-import com.sstinson.countdown.DoubleArray;
+import com.sstinson.countdown.CombinatoricsUtil;
 import com.sstinson.countdown.Main;
 import org.junit.Test;
 
@@ -62,12 +62,19 @@ public class countdownTest {
 
     @Test
     public void testHeapPermutation(){
-        DoubleArray obj = new DoubleArray();
+        CombinatoricsUtil obj = new CombinatoricsUtil();
         ArrayList<Double> a = new ArrayList<>();
         a.add(5.0);
         a.add(20.0);
         a.add(3.0);
         obj.heapPermutation(a,a.size(),a.size());
         System.out.println(obj.permutations);
+    }
+
+    @Test
+    public void testGenerateCombinations(){
+        CombinatoricsUtil obj = new CombinatoricsUtil();
+        obj.generateCombinations(6,4);
+        System.out.println(obj.combinations.size());
     }
 }
