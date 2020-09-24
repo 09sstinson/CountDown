@@ -7,15 +7,76 @@ import java.util.Stack;
 
 public class Main {
 
+    //public ArrayList<Double> results = new ArrayList<>();
+    public Set<Double> results = new LinkedHashSet<>(20000);
+    public CombinatoricsUtil obj = new CombinatoricsUtil();
+    public Add adder = new Add();
+    public Subtract subtracter = new Subtract();
+    public Divide divider = new Divide();
+    public Multiply multiplier = new Multiply();
+
+
+
+
     public static void main(String[] args){
-        Stack stack = new Stack();
-        stack.push("(");
-        stack.push(")");
-        System.out.println(stack);
-        stack.pop();
-        System.out.println(stack);
-        System.out.println(stack.get(0));
+
     }
+
+    public void calculateEveryForPermutation(){
+        for(ArrayList<Double> perm : obj.permutations){
+            calculateEvery(perm);
+        }
+    }
+
+    public void calculateEvery(ArrayList<Double> array){
+        for(ArrayList<BinaryOperation> operations: obj.opCombs){
+            calculateAll(array, operations);
+        }
+    }
+
+    public void calculateAll(ArrayList<Double> array, ArrayList<BinaryOperation> operations){
+        ArrayList<BinaryOperation> copy = new ArrayList<>(operations);
+        //ArrayList<BinaryOperation> copy = operations.clone();
+        ArrayList<Double> temp = new ArrayList<>(array);
+
+//        if(results.size()>130){
+//            return;
+//        }
+//        if(array.size() == 1 ){
+//            results.add(array.get(0));
+//            System.out.println("result " + array.get(0) );
+//            return;
+//        }
+
+        int i = 0;
+
+        for(ArrayList<Integer> order: obj.factorialCombs){
+
+            for(int j : order){
+
+
+                temp = operations.get(i).calculateAtIndex(temp,j-1);
+
+                i++;
+
+                //System.out.println(copy.remove(operation));
+                //copy.remove(operation);
+                //copy.remove(i);
+                //System.out.println("array " +temp);
+                //System.out.println("operation " +copy);
+                //calculateAll(temp, copy);
+                //copy = new ArrayList<BinaryOperation>(operations); // removes funny bits from code but makes results 120*120
+
+            }
+            i=0;
+            results.add(temp.get(0));
+            temp = new ArrayList<>(array);
+        }
+
+        }
+
+
+
 
     public int indexOfNthOccurrence(String string, String regex, int n){
         if(n> string.length()){

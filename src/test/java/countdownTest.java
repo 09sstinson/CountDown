@@ -1,3 +1,4 @@
+import com.sstinson.countdown.Add;
 import com.sstinson.countdown.CombinatoricsUtil;
 import com.sstinson.countdown.Main;
 import org.junit.Test;
@@ -9,6 +10,7 @@ import static org.junit.Assert.*;
 public class countdownTest {
 
     Main m = new Main();
+    CombinatoricsUtil obj = new CombinatoricsUtil();
     @Test
     public void testCheckBalancedBrackets(){
         String s1 = ")()";
@@ -60,21 +62,61 @@ public class countdownTest {
 
     }
 
+
     @Test
-    public void testHeapPermutation(){
-        CombinatoricsUtil obj = new CombinatoricsUtil();
-        ArrayList<Double> a = new ArrayList<>();
-        a.add(5.0);
-        a.add(20.0);
-        a.add(3.0);
-        obj.heapPermutation(a,a.size(),a.size());
+    public void testCombinatoricsUtil(){
+        System.out.println(obj.combinations.size());
         System.out.println(obj.permutations);
+        System.out.println(obj.permutations.size());
+        System.out.println(obj.chosenNumbers);
+        System.out.println(obj.factorialCombs.size());
     }
 
     @Test
-    public void testGenerateCombinations(){
-        CombinatoricsUtil obj = new CombinatoricsUtil();
-        obj.generateCombinations(6,4);
-        System.out.println(obj.combinations.size());
+    public void testCalculateAtIndex(){
+        Add adder = new Add();
+        ArrayList<Double> result = adder.calculateAtIndex(obj.chosenNumbers,1);
+        System.out.println(obj.chosenNumbers);
+        System.out.println(result);
+    }
+
+    @Test
+    public void testCalculateAll() {
+        ArrayList<Double> chosenNumbers = new ArrayList<Double>() {
+            {
+                add(100.0);
+                add(75.0);
+                add(2.0);
+                add(5.0);
+                add(7.0);
+                add(9.0);
+            }
+        };
+        m.calculateAll(chosenNumbers,obj.opCombs.get(1));
+
+        System.out.println(m.results);
+        System.out.println(m.results.size());
+
+    }
+
+    @Test
+    public void testCalculateEvery() {
+        ArrayList<Double> chosenNumbers = new ArrayList<Double>() {
+            {
+                add(9.0);
+                add(4.0);
+                add(10.0);
+                add( 6.0);
+                add(75.0);
+                add(100.0);
+            }
+        };
+        System.out.println(chosenNumbers);
+        //m.calculateEveryForPermutation();
+        m.calculateEvery(chosenNumbers);
+
+        System.out.println(m.results);
+        System.out.println(m.results.size());
+        System.out.println(m.results.contains(591.0));
     }
 }
