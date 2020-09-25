@@ -1,6 +1,6 @@
 package com.sstinson.countdown;
 
-import java.lang.reflect.Array;
+
 import java.util.ArrayList;
 
 
@@ -16,19 +16,19 @@ public class CombinatoricsUtil {
 
         parseOperations(combinations);
         factorialCombs = generateFactorialCombinations(5);
-        heapPermutation(chosenNumbers,chosenNumbers.size(),chosenNumbers.size());
-        permutations.add(chosenNumbers);
+        generatePermutations(chosenNumbers);
+
 
     }
 
     public ArrayList<Double> chosenNumbers = new ArrayList<Double>() {
         {
-            add(9.0);
-            add(4.0);
-            add(10.0);
-            add( 6.0);
-            add(75.0);
-            add(100.0);
+            add(25.0);
+            add(50.0);
+            add(6.0);
+            add( 2.0);
+            add(3.0);
+            add(7.0);
         }
     };
 
@@ -96,7 +96,7 @@ public class CombinatoricsUtil {
             if(array.get(i) == r + 1){
                 array.set(i-1, array.get(i-1) + 1);
                 array.set(i, 1);
-                //System.out.println(array);
+
             }
         }
         return array;
@@ -107,7 +107,7 @@ public class CombinatoricsUtil {
             if(array.get(i) == n +1 - i){
                 array.set(i-1, array.get(i-1) + 1);
                 array.set(i, 1);
-                //System.out.println(array);
+                
             }
         }
         return array;
@@ -116,32 +116,15 @@ public class CombinatoricsUtil {
     private void generatePermutations(ArrayList<Double> array){
         ArrayList<ArrayList<Integer>> perms = generateFactorialCombinations(6);
         ArrayList<Double> copy = new ArrayList<>(chosenNumbers);
+        ArrayList<Double> permutation = new ArrayList<>();
         for(ArrayList<Integer> perm: perms){
-
-        }
-    }
-
-
-    private void heapPermutation(ArrayList<Double> elements, int size, int n ){
-
-        if(size == 1){
-            permutations.add(elements);
-        }
-
-        for(int i=0; i<size; i++){
-            heapPermutation(elements, size-1,n);
-            if(size % 2 == 1){
-                double temp = elements.get(0);
-                elements.set(0,elements.get(size-1));
-                elements.set(size-1, temp);
+            for(int i : perm){
+                permutation.add(copy.get(i-1));
+                copy.remove(i-1);
             }
-
-            else{
-                double temp = elements.get(i);
-                elements.set(i,elements.get(size-1));
-                elements.set(size-1, temp);
-            }
+            permutations.add(permutation);
+            permutation = new ArrayList<>();
+            copy = new ArrayList<>(chosenNumbers);
         }
-
     }
 }

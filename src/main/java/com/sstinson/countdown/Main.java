@@ -14,8 +14,11 @@ public class Main {
     public Subtract subtracter = new Subtract();
     public Divide divider = new Divide();
     public Multiply multiplier = new Multiply();
-
-
+    public double target = 525.0;
+    public boolean targetReached = false;
+    public ArrayList<BinaryOperation> targetOperations;
+    public ArrayList<Integer> orderOfOperations;
+    public ArrayList<Double> targetPermutation;
 
 
     public static void main(String[] args){
@@ -25,28 +28,26 @@ public class Main {
     public void calculateEveryForPermutation(){
         for(ArrayList<Double> perm : obj.permutations){
             calculateEvery(perm);
+            if(targetReached){
+                return;
+            }
         }
     }
 
     public void calculateEvery(ArrayList<Double> array){
         for(ArrayList<BinaryOperation> operations: obj.opCombs){
             calculateAll(array, operations);
+            if(targetReached){
+                return;
+            }
         }
     }
 
     public void calculateAll(ArrayList<Double> array, ArrayList<BinaryOperation> operations){
         ArrayList<BinaryOperation> copy = new ArrayList<>(operations);
-        //ArrayList<BinaryOperation> copy = operations.clone();
+
         ArrayList<Double> temp = new ArrayList<>(array);
 
-//        if(results.size()>130){
-//            return;
-//        }
-//        if(array.size() == 1 ){
-//            results.add(array.get(0));
-//            System.out.println("result " + array.get(0) );
-//            return;
-//        }
 
         int i = 0;
 
@@ -59,17 +60,25 @@ public class Main {
 
                 i++;
 
-                //System.out.println(copy.remove(operation));
-                //copy.remove(operation);
-                //copy.remove(i);
-                //System.out.println("array " +temp);
-                //System.out.println("operation " +copy);
-                //calculateAll(temp, copy);
-                //copy = new ArrayList<BinaryOperation>(operations); // removes funny bits from code but makes results 120*120
+                if(temp.contains(target) ){
+                    targetReached = true;
+                    targetOperations = operations;
+                    orderOfOperations = order;
+                    targetPermutation = array;
+                    return;
+                }
 
             }
             i=0;
-            results.add(temp.get(0));
+
+//            results.add(temp.get(0));
+//            if(temp.get(0) == target){
+//                targetReached = true;
+//                targetOperations = operations;
+//                orderOfOperations = order;
+//                targetPermutation = array;
+//                return;
+//            }
             temp = new ArrayList<>(array);
         }
 
