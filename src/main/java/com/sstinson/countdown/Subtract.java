@@ -6,6 +6,6 @@ public class Subtract extends BinaryOperation {
         return x - y;
     }
     public String toString(){
-        return type.toString();
+        return "\u2212";
     }
 }

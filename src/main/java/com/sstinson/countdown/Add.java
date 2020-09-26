@@ -6,6 +6,6 @@ public class Add extends BinaryOperation {
         return x + y;
     }
     public String toString(){
-        return type.toString();
+        return "\u002B";
     }
 }

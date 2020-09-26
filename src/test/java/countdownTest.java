@@ -65,8 +65,8 @@ public class countdownTest {
 
     @Test
     public void testCombinatoricsUtil(){
-        System.out.println(obj.combinations.size());
-        System.out.println(obj.permutations);
+        System.out.println(obj.combinations);
+        System.out.println(obj.opCombs);
         System.out.println(obj.permutations.size());
         System.out.println(obj.chosenNumbers);
         System.out.println(obj.factorialCombs.size());
@@ -111,16 +111,15 @@ public class countdownTest {
                 add(100.0);
             }
         };
-        System.out.println(chosenNumbers);
+        //System.out.println(chosenNumbers);
         m.calculateEveryForPermutation();
-        //m.calculateEvery(chosenNumbers);
 
-        System.out.println(m.results);
-        System.out.println(m.results.size());
-        System.out.println(m.results.contains(591.0));
-        System.out.println(m.orderOfOperations);
-        System.out.println(m.targetOperations);
-        System.out.println(m.targetPermutation);
-
+//        System.out.println(m.results);
+//        System.out.println(m.results.size());
+//        System.out.println(m.results.contains(591.0));
+//        System.out.println(m.orderOfOperations);
+//        System.out.println(m.targetOperations);
+//        System.out.println(m.targetPermutation);
+        m.printOutput();
     }
 }

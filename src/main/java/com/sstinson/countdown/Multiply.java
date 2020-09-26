@@ -6,6 +6,6 @@ public class Multiply extends BinaryOperation{
         return x * y;
     }
     public String toString(){
-        return type.toString();
+        return "\u00D7";
     }
 }

@@ -8,6 +8,6 @@ public class Divide extends BinaryOperation {
     }
 
     public String toString(){
-        return type.toString();
+        return "\u00F7";
     }
 }
