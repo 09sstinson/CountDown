@@ -23,12 +23,12 @@ public class CombinatoricsUtil {
 
     public ArrayList<Double> chosenNumbers = new ArrayList<Double>() {
         {
-            add(75.0);
+            add(60.0);
+            add(24.0);
             add(25.0);
-            add(10.0);
-            add( 7.0);
-            add(2.0);
-            add(10.0);
+            add( 9.0);
+            add(7.0);
+            add(3.0);
         }
     };
 

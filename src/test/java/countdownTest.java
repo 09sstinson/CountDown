@@ -114,12 +114,9 @@ public class countdownTest {
         //System.out.println(chosenNumbers);
         m.calculateEveryForPermutation();
 
-//        System.out.println(m.results);
-//        System.out.println(m.results.size());
-//        System.out.println(m.results.contains(591.0));
-//        System.out.println(m.orderOfOperations);
-//        System.out.println(m.targetOperations);
-//        System.out.println(m.targetPermutation);
+        System.out.println(m.orderOfOperations);
+        System.out.println(m.targetOperations);
+        System.out.println(m.targetPermutation);
         m.printOutput();
     }
 }

@@ -14,7 +14,7 @@ public class Main {
     public Subtract subtracter = new Subtract();
     public Divide divider = new Divide();
     public Multiply multiplier = new Multiply();
-    public double target = 744.0;
+    public double target = 501.0;
     public boolean targetReached = false;
     public ArrayList<BinaryOperation> targetOperations;
     public ArrayList<Integer> orderOfOperations;
@@ -27,24 +27,44 @@ public class Main {
 
     public void printOutput(){
         if(targetReached){
-            String output = "";
+
+            ArrayList<String> output = new ArrayList<>();
+            ArrayList<Long> intermediateResults = new ArrayList<>();
             ArrayList<Double> copy = new ArrayList<>(targetPermutation);
             ArrayList<BinaryOperation> operations = targetOperations;
             ArrayList<Integer> order =  orderOfOperations;
             int i = 0;
             for(int j: order){
-                //int first = order.get(i) -1;
-                //System.out.println(first);
-                //int second = order.get(i+1) -1;
-                //System.out.println(copy);
-                output = output + copy.get(j-1) + " " + operations.get(i).toString() + " " + copy.get(j);
+                long first = (long) copy.get(j-1).doubleValue();
+                long second = (long) copy.get(j).doubleValue();
+
+                String temp = first + " " + operations.get(i)+ " " + second;
                 copy = operations.get(i).calculateAtIndex(copy,j-1);
+
+                long result = (long) copy.get(j-1).doubleValue();
+                temp =  temp + " " + "=" + " " + result;
+                output.add(i,temp);
+                 if(result != target) intermediateResults.add(result);
                 i++;
-                output = output + " " + "=" + " " + copy.get(j-1) + "\n";
                 if(copy.get(j-1)==target){
                     break;
                 }
             }
+
+            for(int k =0; k < intermediateResults.size() ; k++){
+
+                int count = 0;
+                for(String s:output){
+
+                    if(s.contains(intermediateResults.get(k).toString() + " ")){
+                        count++;
+                    }
+                }
+                if(count == 0){
+                    output.remove(k);
+                }
+            }
+
             System.out.println(output);
         }else{
             System.out.println("No solution");
@@ -221,7 +241,7 @@ public class Main {
                         if (top == '(') {
                             a.pop();
                         } else {
-                            System.out.println("here" + i);
+
                             break;
                         }
                     }
