@@ -1,6 +1,7 @@
 import com.sstinson.countdown.Add;
 import com.sstinson.countdown.CombinatoricsUtil;
-import com.sstinson.countdown.Main;
+import com.sstinson.countdown.GUI;
+import com.sstinson.countdown.CountdownCalculator;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -9,7 +10,7 @@ import static org.junit.Assert.*;
 
 public class countdownTest {
 
-    Main m = new Main();
+    CountdownCalculator m = new CountdownCalculator();
     CombinatoricsUtil obj = new CombinatoricsUtil();
     @Test
     public void testCheckBalancedBrackets(){
@@ -101,16 +102,7 @@ public class countdownTest {
 
     @Test
     public void testCalculateEvery() {
-        ArrayList<Double> chosenNumbers = new ArrayList<Double>() {
-            {
-                add(9.0);
-                add(4.0);
-                add(10.0);
-                add( 6.0);
-                add(75.0);
-                add(100.0);
-            }
-        };
+
         //System.out.println(chosenNumbers);
         m.calculateEveryForPermutation();
 
@@ -118,5 +110,10 @@ public class countdownTest {
         System.out.println(m.targetOperations);
         System.out.println(m.targetPermutation);
         m.printOutput();
+    }
+
+    @Test
+    public void testGUI(){
+        GUI countdownGUI = new GUI();
     }
 }

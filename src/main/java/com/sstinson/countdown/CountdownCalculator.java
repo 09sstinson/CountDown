@@ -5,25 +5,20 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 import java.util.Stack;
 
-public class Main {
+public class CountdownCalculator {
 
-    //public ArrayList<Double> results = new ArrayList<>();
     public Set<Double> results = new LinkedHashSet<>(20000);
     public CombinatoricsUtil obj = new CombinatoricsUtil();
-    public Add adder = new Add();
-    public Subtract subtracter = new Subtract();
-    public Divide divider = new Divide();
-    public Multiply multiplier = new Multiply();
-    public double target = 501.0;
+    public double target = 50101.0;
     public boolean targetReached = false;
     public ArrayList<BinaryOperation> targetOperations;
     public ArrayList<Integer> orderOfOperations;
     public ArrayList<Double> targetPermutation;
 
 
-    public static void main(String[] args){
-
-    }
+//    public static void main(String[] args){
+//        GUI countdownGUI = new GUI();
+//    }
 
     public void printOutput(){
         if(targetReached){
@@ -117,14 +112,6 @@ public class Main {
             }
             i=0;
 
-//            results.add(temp.get(0));
-//            if(temp.get(0) == target){
-//                targetReached = true;
-//                targetOperations = operations;
-//                orderOfOperations = order;
-//                targetPermutation = array;
-//                return;
-//            }
             temp = new ArrayList<>(array);
         }
 
